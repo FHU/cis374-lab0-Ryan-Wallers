@@ -1,19 +1,19 @@
 ﻿namespace Lab0.Tests;
 
 [TestClass]
-public sealed class HashWordSetTests
+public sealed class SortedWordSetTests
 {
     [TestMethod]
     public void TestAdd_NewWord_ReturnsTrue()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         Assert.IsTrue(wordSet.Add("hello"));
     }
 
     [TestMethod]
     public void TestAdd_DuplicateWord_ReturnsFalse()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("hello");
         Assert.IsFalse(wordSet.Add("hello"));
     }
@@ -21,7 +21,7 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestAdd_MultipleWords()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         Assert.IsTrue(wordSet.Add("apple"));
         Assert.IsTrue(wordSet.Add("banana"));
         Assert.IsTrue(wordSet.Add("cherry"));
@@ -31,7 +31,7 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestContains_ExistingWord_ReturnsTrue()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("world");
         Assert.IsTrue(wordSet.Contains("world"));
     }
@@ -39,7 +39,7 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestContains_NonExistingWord_ReturnsFalse()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("world");
         Assert.IsFalse(wordSet.Contains("hello"));
     }
@@ -47,14 +47,14 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestContains_EmptySet_ReturnsFalse()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         Assert.IsFalse(wordSet.Contains("anything"));
     }
 
     [TestMethod]
     public void TestRemove_ExistingWord_ReturnsTrue()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("hey");
         Assert.IsTrue(wordSet.Remove("hey"));
         Assert.IsFalse(wordSet.Contains("hey"));
@@ -63,7 +63,7 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestRemove_NonExistingWord_ReturnsFalse()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("what");
         Assert.IsFalse(wordSet.Remove("missing"));
     }
@@ -71,14 +71,14 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestRemove_EmptySet_ReturnsFalse()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         Assert.IsFalse(wordSet.Remove("anything"));
     }
 
     [TestMethod]
     public void TestNext_ReturnsNextWord()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("beau");
         wordSet.Add("caleb");
         wordSet.Add("ryan");
@@ -91,7 +91,7 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestNext_NoNextWord_ReturnsNull()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("apple");
         wordSet.Add("banana");
 
@@ -102,14 +102,14 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestNext_EmptySet_ReturnsNull()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         Assert.IsNull(wordSet.Next("anything"));
     }
 
     [TestMethod]
     public void TestNext_WithSampleData()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("ryan");
         wordSet.Add("beau");
         wordSet.Add("caleb");
@@ -129,7 +129,7 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestPrefix_ReturnsMatchingWords()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("ryan");
         wordSet.Add("beau");
         wordSet.Add("caleb");
@@ -149,7 +149,7 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestPrefix_LimitResults()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("apple");
         wordSet.Add("application");
         wordSet.Add("apply");
@@ -171,7 +171,7 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestPrefix_NoMatches_ReturnsEmpty()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("hello");
         wordSet.Add("world");
 
@@ -182,7 +182,7 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestPrefix_EmptyPrefix_ReturnsAllWordsSorted()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("zebra");
         wordSet.Add("apple");
         wordSet.Add("mango");
@@ -197,7 +197,7 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestPrefix_RequestMoreThanAvailable()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("cat");
         wordSet.Add("car");
 
@@ -208,7 +208,7 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestPrefix_WithSampleData()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("ryan");
         wordSet.Add("rhino");
         wordSet.Add("rye");
@@ -231,7 +231,7 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestPrev_ReturnsPreviousWord()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("beau");
         wordSet.Add("caleb");
         wordSet.Add("ryan");
@@ -243,7 +243,7 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestPrev_NoPreviousWord_ReturnsNull()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("banana");
         wordSet.Add("cherry");
 
@@ -254,14 +254,14 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestPrev_EmptySet_ReturnsNull()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         Assert.IsNull(wordSet.Prev("anything"));
     }
 
     [TestMethod]
     public void TestPrev_WithSampleData()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("ryan");
         wordSet.Add("beau");
         wordSet.Add("caleb");
@@ -281,7 +281,7 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestRange_ReturnsWordsInRange()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("apple");
         wordSet.Add("banana");
         wordSet.Add("cherry");
@@ -299,7 +299,7 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestRange_IncludesBoundaries()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("apple");
         wordSet.Add("banana");
         wordSet.Add("cherry");
@@ -314,7 +314,7 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestRange_LimitResults()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("apple");
         wordSet.Add("banana");
         wordSet.Add("cherry");
@@ -329,7 +329,7 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestRange_NoMatches_ReturnsEmpty()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("apple");
         wordSet.Add("cherry");
 
@@ -340,7 +340,7 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestRange_EmptySet_ReturnsEmpty()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         var results = wordSet.Range("a", "z", 10).ToList();
         Assert.AreEqual(0, results.Count);
     }
@@ -348,7 +348,7 @@ public sealed class HashWordSetTests
     [TestMethod]
     public void TestRange_WithSampleData()
     {
-        var wordSet = new HashWordSet();
+        var wordSet = new SortedWordSet();
         wordSet.Add("ryan");
         wordSet.Add("beau");
         wordSet.Add("caleb");

@@ -1,9 +1,12 @@
+namespace Lab0;
+
 /// <summary>
 /// Interface for a word set that supports prefix/range queries
 /// and lexicographic neighbors (Next/Prev).
 /// </summary>
 public interface IWordSet
 {
+    int Count {get;}
     bool Add(string word);
     bool Remove(string word);
     bool Contains(string word);
